@@ -82,4 +82,4 @@ Here, `n` is the number of elements in the array.
 
 ## Handwritten Notes
 
-See [`two-sum-notes.jpg`](two-sum-notes.jpg) for my handwritten explanation and examples.
+[Handwritten Two Sum Notes] (two-sum-notes.jpg.png)
