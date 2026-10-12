@@ -1,41 +1,85 @@
-<h2><a href="https://leetcode.com/problems/two-sum">1. Two Sum</a></h2><h3>Easy</h3><hr><p>You are given an array of integers <code>nums</code>&nbsp;and an integer <code>target</code>, return <em>indices of the two numbers such that they add up to <code>target</code></em>.</p>
+# 1. Two Sum
 
-<p>You may assume that each input would have <strong><em>exactly</em> one solution</strong>, and you may not use the <em>same</em> element twice.</p>
+**LeetCode Problem:** [Two Sum](https://leetcode.com/problems/two-sum/)  
+**Difficulty:** Easy  
+**Topic:** Array, Hash Map  
+**Language:** Python
 
-<p>You can return the answer in any order.</p>
+## Problem Statement
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+Given an array of integers `nums` and an integer `target`, find the indices of two numbers whose sum equals the target.
 
-<pre>
-<strong>Input:</strong> nums = [2,7,11,15], target = 9
-<strong>Output:</strong> [0,1]
-<strong>Explanation:</strong> Because nums[0] + nums[1] == 9, we return [0, 1].
-</pre>
+**Conditions:**
+- Exactly one valid answer exists.
+- The same element cannot be used twice.
+- The answer can be returned in any order.
 
-<p><strong class="example">Example 2:</strong></p>
+## Examples
 
-<pre>
-<strong>Input:</strong> nums = [3,2,4], target = 6
-<strong>Output:</strong> [1,2]
-</pre>
+### Example 1
+```python
+nums = [2, 7, 11, 15]
+target = 9
+Output = [0, 1]
+```
+Explanation: `nums[0] + nums[1] = 2 + 7 = 9`.
 
-<p><strong class="example">Example 3:</strong></p>
+### Example 2
+```python
+nums = [3, 2, 4]
+target = 6
+Output = [1, 2]
+```
+Explanation: `nums[1] + nums[2] = 2 + 4 = 6`.
 
-<pre>
-<strong>Input:</strong> nums = [3,3], target = 6
-<strong>Output:</strong> [0,1]
-</pre>
+### Example 3
+```python
+nums = [3, 3]
+target = 6
+Output = [0, 1]
+```
+Explanation: The two elements at different indices add up to `6`.
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+## My Approach: Hash Map
 
-<ul>
-	<li><code>2 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>
-	<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
-	<li><code>-10<sup>9</sup> &lt;= target &lt;= 10<sup>9</sup></code></li>
-	<li><strong>Only one valid answer exists.</strong></li>
-</ul>
+1. Create an empty dictionary called `seen`.
+2. Traverse the list using `enumerate()` to get each number and its index.
+3. Calculate the complement using `target - num`.
+4. Check whether the complement exists in the dictionary.
+5. If it exists, return the two indices.
+6. Otherwise, store the current number and its index.
 
-<p>&nbsp;</p>
-<strong>Follow-up:&nbsp;</strong>Can you come up with an algorithm that is less than <code>O(n<sup>2</sup>)</code><font face="monospace">&nbsp;</font>time complexity?
+## Python Solution
+
+```python
+class Solution:
+    def twoSum(self, nums: list[int], target: int) -> list[int]:
+        seen = {}
+
+        for i, num in enumerate(nums):
+            complement = target - num
+
+            if complement in seen:
+                return [seen[complement], i]
+
+            seen[num] = i
+```
+
+## Complexity Analysis
+
+- **Time Complexity:** O(n) average
+- **Space Complexity:** O(n)
+
+Here, `n` is the number of elements in the array.
+
+## Key Learnings
+
+- List indices start from `0`.
+- Return indices, not the values themselves.
+- `enumerate()` provides both index and value.
+- A dictionary helps find the required number efficiently.
+- Check for the complement before storing the current number.
+
+## Handwritten Notes
+
+See [`two-sum-notes.jpg`](two-sum-notes.jpg) for my handwritten explanation and examples.
